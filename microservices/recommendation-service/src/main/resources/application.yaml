@@ -1,0 +1,16 @@
+
+server:
+  port: 7002
+
+logging:
+  level:
+    root: info
+    handsonms: debug
+
+---
+
+spring:
+  profiles: docker
+
+server:
+  port: 8080
