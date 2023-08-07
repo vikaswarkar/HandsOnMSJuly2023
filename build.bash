@@ -27,6 +27,10 @@ cd ..
 cd product-composite
 mvn clean compile package install
 
+cd../..
+cd eureka
+mvn clean compile package install
+
 cd ..
 docker-compose build
 

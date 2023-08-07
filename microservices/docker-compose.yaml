@@ -1,6 +1,11 @@
 version: '2.1'
 
 services:
+  eureka:
+    build: ../eureka
+    mem_limit: 350m
+    ports:
+      - "8761:8761"
   product:
     build: ./product-service
     mem_limit: 350m
