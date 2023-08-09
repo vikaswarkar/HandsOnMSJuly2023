@@ -13,6 +13,7 @@ import handsonms.util.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -38,24 +39,28 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
     @Autowired
     public ProductCompositeIntegration(
             RestTemplate restTemplate,
-            ObjectMapper mapper,
+            ObjectMapper mapper
 
-            @Value("${app.product-service.host}") String productServiceHost,
-            @Value("${app.product-service.port}") int    productServicePort,
-
-            @Value("${app.recommendation-service.host}") String recommendationServiceHost,
-            @Value("${app.recommendation-service.port}") int    recommendationServicePort,
-
-            @Value("${app.review-service.host}") String reviewServiceHost,
-            @Value("${app.review-service.port}") int    reviewServicePort
+//            @Value("${app.product-service.host}") String productServiceHost,
+//            @Value("${app.product-service.port}") int    productServicePort,
+//
+//            @Value("${app.recommendation-service.host}") String recommendationServiceHost,
+//            @Value("${app.recommendation-service.port}") int    recommendationServicePort,
+//
+//            @Value("${app.review-service.host}") String reviewServiceHost,
+//            @Value("${app.review-service.port}") int    reviewServicePort
     ) {
 
         this.restTemplate = restTemplate;
         this.mapper = mapper;
 
-        productServiceUrl        = "http://" + productServiceHost + ":" + productServicePort + "/product/";
-        recommendationServiceUrl = "http://" + recommendationServiceHost + ":" + recommendationServicePort + "/recommendation?productId=";
-        reviewServiceUrl         = "http://" + reviewServiceHost + ":" + reviewServicePort + "/review?productId=";
+//        productServiceUrl        = "http://" + productServiceHost + ":" + productServicePort + "/product/";
+//        recommendationServiceUrl = "http://" + recommendationServiceHost + ":" + recommendationServicePort + "/recommendation?productId=";
+//        reviewServiceUrl         = "http://" + reviewServiceHost + ":" + reviewServicePort + "/review?productId=";
+
+        productServiceUrl        = "http://product-service/product/";
+        recommendationServiceUrl = "http://recommendation-service/recommendation?productId=";
+        reviewServiceUrl         = "http://review-service/review?productId=";
     }
 
     public Product getProduct(int productId) {

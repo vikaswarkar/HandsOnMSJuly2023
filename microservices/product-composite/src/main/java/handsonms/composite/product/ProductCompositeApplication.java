@@ -3,6 +3,7 @@ package handsonms.composite.product;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
@@ -41,6 +42,7 @@ public class ProductCompositeApplication {
     String apiContactEmail;
 
     @Bean
+    @LoadBalanced
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
@@ -49,7 +51,7 @@ public class ProductCompositeApplication {
         SpringApplication.run(ProductCompositeApplication.class, args);
     }
 
-//    @Bean
+    @Bean
     public Docket apiDocumentation() {
         return new Docket(SWAGGER_2)
                 .select()
