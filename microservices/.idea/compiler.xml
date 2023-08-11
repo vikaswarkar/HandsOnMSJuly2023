@@ -12,6 +12,7 @@
         <module name="review-service" />
         <module name="eureka" />
         <module name="product-service" />
+        <module name="zipkin-server" />
         <module name="api" />
         <module name="recommendation-service" />
       </profile>
@@ -25,6 +26,7 @@
       <module name="product-service" options="-parameters" />
       <module name="recommendation-service" options="-parameters" />
       <module name="review-service" options="-parameters" />
+      <module name="zipkin-server" options="-parameters" />
     </option>
   </component>
 </project>
