@@ -1,11 +1,22 @@
 version: '2.1'
 
 services:
+
+  gateway:
+    build: ../edge-server
+    mem_limit: 350m
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
   eureka:
     build: ../eureka
     mem_limit: 350m
-    ports:
-      - "8761:8761"
+#    ports:
+#      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
 
   product-service:
     build: ./product-service
@@ -28,7 +39,7 @@ services:
   product-composite-service:
     build: product-composite
     mem_limit: 350m
-    ports:
-      - "8080:8080"
+#    ports:
+#      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
