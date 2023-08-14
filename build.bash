@@ -22,16 +22,20 @@ cd ..
 cd recommendation-service
 mvn clean compile package install
 
-
 cd ..
 cd product-composite
 mvn clean compile package install
 
-cd../..
+cd ../..
 cd eureka
 mvn clean compile package install
 
 cd ..
+echo 'Before Edge Server ' "$PWD"
+cd edge-server
+mvn clean compile package install
+
+cd ../microservices
 docker-compose build
 
 echo 'Inside ------->>>>> ' "$PWD"
